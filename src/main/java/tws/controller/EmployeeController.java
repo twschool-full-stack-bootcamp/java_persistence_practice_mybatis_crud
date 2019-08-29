@@ -12,6 +12,7 @@ import tws.repository.EmployeeMapper;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/employees")
@@ -25,9 +26,4 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeMapper.selectAll());
     }
 
-    @PostMapping("")
-    public ResponseEntity<Employee> insert(@RequestBody Employee employee) {
-        employeeMapper.insert(employee);
-        return ResponseEntity.created(URI.create("/employees/" + employee.getId())).body(employee);
-    }
 }
